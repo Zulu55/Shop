@@ -6,12 +6,31 @@
     using Entities;
     using Microsoft.AspNetCore.Identity;
 
+    /// <summary>
+    /// This class seed the initial data to DB
+    /// </summary>
     public class SeedDb
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly DataContext context;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly UserManager<User> userManager;
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Random random;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="userManager"></param>
         public SeedDb(DataContext context, UserManager<User> userManager)
         {
             this.context = context;
@@ -23,6 +42,7 @@
         {
             await this.context.Database.EnsureCreatedAsync();
 
+            // Add user
             var user = await this.userManager.FindByEmailAsync("jzuluaga55@gmail.com");
             if (user == null)
             {
@@ -42,6 +62,7 @@
                 }
             }
 
+            // Add products
             if (!this.context.Products.Any())
             {
                 this.AddProduct("iPhone X", user);
