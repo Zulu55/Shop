@@ -1,0 +1,52 @@
+﻿@model Shop.Web.Models.RegisterNewUserViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register New User</h2>
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Username">Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Confirm">Confirm</label>
+                <input asp-for="Confirm" type="password" class="form-control" />
+                <span asp-validation-for="Confirm" class="text-warning"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register New User" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
