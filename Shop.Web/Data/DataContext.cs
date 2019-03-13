@@ -12,6 +12,8 @@
 
         public DbSet<Country> Countries { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OrderDetail> OrderDetails { get; set; }

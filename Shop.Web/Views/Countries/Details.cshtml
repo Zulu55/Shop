@@ -1,0 +1,105 @@
+﻿@model Shop.Web.Data.Entities.Country
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Country</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="AddCity" asp-route-id="@Model.Id" class="btn btn-info">Add City</a>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
+</div>
+
+<h4>Cities</h4>
+@if (Model.Cities == null || Model.Cities.Count == 0)
+{
+    <h5>No cities added yet</h5>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cities.FirstOrDefault().Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cities.OrderBy(c => c.Name))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td id="@item.Id">
+                        <a asp-action="EditCity" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="DeleteCity" asp-route-id="@item.Id" class="btn btn-danger" id="btnDelete">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div id="deleteDialog" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
+                <h4 class="modal-title">Delete</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to delete the city?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnYesDelete">Delete</button>
+                <button type="button" class="btn btn-success" id="btnNoDelete">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var id = 0;
+
+            $('a[id*=btnDelete]').click(function () {
+                debugger;
+                id = $(this).parent()[0].id;
+                $("#deleteDialog").modal('show');
+                return false;
+            });
+
+            $("#btnNoDelete").click(function () {
+                $("#deleteDialog").modal('hide');
+                return false;
+            });
+
+
+            $("#btnYesDelete").click(function () {
+                window.location.href = '/Countries/DeleteCity/' + id;
+            });
+
+        });
+    </script>
+}

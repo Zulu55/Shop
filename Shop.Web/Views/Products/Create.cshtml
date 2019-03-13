@@ -12,13 +12,13 @@
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
@@ -27,19 +27,29 @@
 
             <div class="form-group">
                 <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" class="form-control" type="file"/>
+                <input asp-for="ImageFile" class="form-control" type="file" />
                 <span asp-validation-for="ImageFile" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="LastPurchase" class="control-label"></label>
-                <input asp-for="LastPurchase" class="form-control" />
+                <div class="input-group date" data-provide="datepicker">
+                    <input asp-for="LastPurchase" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="LastPurchase" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="LastSale" class="control-label"></label>
-                <input asp-for="LastSale" class="form-control" />
+                <div class="input-group date" data-provide="datepicker">
+                    <input asp-for="LastSale" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="LastSale" class="text-danger"></span>
             </div>
 

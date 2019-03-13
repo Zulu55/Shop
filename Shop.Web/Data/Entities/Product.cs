@@ -18,9 +18,11 @@
         public string ImageUrl { get; set; }
 
         [Display(Name = "Last Purchase")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? LastPurchase { get; set; }
 
         [Display(Name = "Last Sale")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? LastSale { get; set; }
 
         [Display(Name = "Is Availabe?")]

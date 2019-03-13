@@ -35,13 +35,23 @@
 
             <div class="form-group">
                 <label asp-for="LastPurchase" class="control-label"></label>
-                <input asp-for="LastPurchase" class="form-control" />
+                <div class="input-group date" data-provide="datepicker">
+                    <input asp-for="LastPurchase" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="LastPurchase" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="LastSale" class="control-label"></label>
-                <input asp-for="LastSale" class="form-control" />
+                <div class="input-group date" data-provide="datepicker">
+                    <input asp-for="LastSale" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <span asp-validation-for="LastSale" class="text-danger"></span>
             </div>
 
