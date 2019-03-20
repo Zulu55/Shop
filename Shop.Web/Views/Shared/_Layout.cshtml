@@ -8,7 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="~/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />        
+        <link href="~/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -16,6 +16,8 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
     </environment>
 </head>
 <body>
@@ -41,6 +43,7 @@
                         @if (this.User.IsInRole("Admin"))
                         {
                             <li><a asp-area="" asp-controller="Countries" asp-action="Index">Countries</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="Index">Users</a></li>
                         }
                         <li><a asp-area="" asp-controller="Orders" asp-action="Index">Orders</a></li>
                     }
@@ -89,6 +92,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
+        <script src="~/node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

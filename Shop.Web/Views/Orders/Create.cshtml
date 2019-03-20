@@ -8,7 +8,7 @@
 
 <p>
     <a asp-action="AddProduct" class="btn btn-success">Add Product</a>
-    <a asp-action="ConfirmOrder" class="btn btn-primary" id="btnConfirm">Confirm Order</a>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmDialog">Confirm Order</button>
 </p>
 <table class="table">
     <thead>
@@ -44,47 +44,53 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Value)
                 </td>
-                <td id="@item.Id">
+                <td>
                     <a asp-action="Increase" asp-route-id="@item.Id" class="btn btn-warning"><i class="fa fa-plus"></i></a>
                     <a asp-action="Decrease" asp-route-id="@item.Id" class="btn btn-info"><i class="fa fa-minus"></i></a>
-                    <a asp-action="DeleteItem" asp-route-id="@item.Id" class="btn btn-danger" id="btnDeleteItem">Delete</a>
+                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Delete</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<div id="confirmDialog" class="modal fade">
-    <div class="modal-dialog modal-sm">
+<!-- Confirm Order-->
+<div class="modal fade" id="confirmDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
-                <h4 class="modal-title">Confirm</h4>
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <p>Do you want to confirm the order?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="btnYesConfirm">Yes</button>
-                <button type="button" class="btn btn-success" id="btnNoConfirm">No</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="btnYes">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
-<div id="deleteDialog" class="modal fade">
-    <div class="modal-dialog modal-sm">
+<!--Delete Item-->
+<div class="modal fade" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-window-close"></i></button>
-                <h4 class="modal-title">Delete</h4>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <p>Do you want to delete the product from order?</p>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-danger" id="btnYesDelete">Delete</button>
-                <button type="button" class="btn btn-success" id="btnNoDelete">No</button>
             </div>
         </div>
     </div>
@@ -96,37 +102,20 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-
-            var id = 0;
-
-            $("#btnConfirm").click(function () {
-                $("#confirmDialog").modal('show');
-                return false;
-            });
-
-            $("#btnNoConfirm").click(function () {
-                $("#confirmDialog").modal('hide');
-                return false;
-            });
-
-            $("#btnYesConfirm").click(function () {
+            // Confirm Order
+            $("#btnYes").click(function () {
                 window.location.href = '/Orders/ConfirmOrder';
             });
 
-            $('a[id*=btnDeleteItem]').click(function () {
-                debugger;
-                id = $(this).parent()[0].id;
-                $("#deleteDialog").modal('show');
-                return false;
-            });
+            // Delete item
+            var item_to_delete;
 
-            $("#btnNoDelete").click(function () {
-                $("#deleteDialog").modal('hide');
-                return false;
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
             });
 
             $("#btnYesDelete").click(function () {
-                window.location.href = '/Orders/DeleteItem/' + id;
+                window.location.href = '/Orders/DeleteItem/' + item_to_delete;
             });
         });
     </script>
