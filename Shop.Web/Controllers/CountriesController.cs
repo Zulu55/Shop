@@ -174,7 +174,12 @@
                 return NotFound();
             }
 
-            await this.countryRepository.DeleteAsync(country);
+            try
+            {
+                await this.countryRepository.DeleteAsync(country);
+
+            }
+            catch { }
             return RedirectToAction(nameof(Index));
         }
     }

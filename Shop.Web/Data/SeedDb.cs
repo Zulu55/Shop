@@ -25,11 +25,11 @@
         {
             await this.context.Database.EnsureCreatedAsync();
 
-            await this.CheckRoles();
+            await this.CheckRolesAsync();
 
             if (!this.context.Countries.Any())
             {
-                await this.CountriesAndCities();
+                await this.AddCountriesAndCitiesAsync();
             }
 
             await this.CheckUser("brad@gmail.com", "Brad", "Pit", "Customer");
@@ -101,136 +101,33 @@
             return user;
         }
 
-        private async Task CountriesAndCities()
+        private async Task AddCountriesAndCitiesAsync()
         {
-            var citiesCol = new List<City>();
-            citiesCol.Add(new City { Name = "Medellín" });
-            citiesCol.Add(new City { Name = "Bogotá" });
-            citiesCol.Add(new City { Name = "Calí" });
-            citiesCol.Add(new City { Name = "Barranquilla" });
-            citiesCol.Add(new City { Name = "Bucaramanga" });
-            citiesCol.Add(new City { Name = "Cartagena" });
-            citiesCol.Add(new City { Name = "Pereira" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesCol,
-                Name = "Colombia"
-            });
-
-            var citiesArg = new List<City>();
-            citiesArg.Add(new City { Name = "Córdoba" });
-            citiesArg.Add(new City { Name = "Buenos Aires" });
-            citiesArg.Add(new City { Name = "Rosario" });
-            citiesArg.Add(new City { Name = "Tandil" });
-            citiesArg.Add(new City { Name = "Salta" });
-            citiesArg.Add(new City { Name = "Mendoza" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesArg,
-                Name = "Argentina"
-            });
-
-            var citiesUsa = new List<City>();
-            citiesUsa.Add(new City { Name = "New York" });
-            citiesUsa.Add(new City { Name = "Los Ángeles" });
-            citiesUsa.Add(new City { Name = "Chicago" });
-            citiesUsa.Add(new City { Name = "Washington" });
-            citiesUsa.Add(new City { Name = "San Francisco" });
-            citiesUsa.Add(new City { Name = "Miami" });
-            citiesUsa.Add(new City { Name = "Boston" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesUsa,
-                Name = "Estados Unidos"
-            });
-
-            var citiesEcuador = new List<City>();
-            citiesEcuador.Add(new City { Name = "Quito" });
-            citiesEcuador.Add(new City { Name = "Guayaquil" });
-            citiesEcuador.Add(new City { Name = "Ambato" });
-            citiesEcuador.Add(new City { Name = "Manta" });
-            citiesEcuador.Add(new City { Name = "Loja" });
-            citiesEcuador.Add(new City { Name = "Santo" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesEcuador,
-                Name = "Ecuador"
-            });
-
-            var citiesPeru = new List<City>();
-            citiesPeru.Add(new City { Name = "Lima" });
-            citiesPeru.Add(new City { Name = "Arequipa" });
-            citiesPeru.Add(new City { Name = "Cusco" });
-            citiesPeru.Add(new City { Name = "Trujillo" });
-            citiesPeru.Add(new City { Name = "Chiclayo" });
-            citiesPeru.Add(new City { Name = "Iquitos" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesPeru,
-                Name = "Peru"
-            });
-
-            var citiesChile = new List<City>();
-            citiesChile.Add(new City { Name = "Santiago" });
-            citiesChile.Add(new City { Name = "Valdivia" });
-            citiesChile.Add(new City { Name = "Concepcion" });
-            citiesChile.Add(new City { Name = "Puerto Montt" });
-            citiesChile.Add(new City { Name = "Temucos" });
-            citiesChile.Add(new City { Name = "La Sirena" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesChile,
-                Name = "Chile"
-            });
-
-            var citiesUruguay = new List<City>();
-            citiesUruguay.Add(new City { Name = "Montevideo" });
-            citiesUruguay.Add(new City { Name = "Punta del Este" });
-            citiesUruguay.Add(new City { Name = "Colonia del Sacramento" });
-            citiesUruguay.Add(new City { Name = "Las Piedras" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesUruguay,
-                Name = "Uruguay"
-            });
-
-            var citiesBolivia = new List<City>();
-            citiesBolivia.Add(new City { Name = "La Paz" });
-            citiesBolivia.Add(new City { Name = "Sucre" });
-            citiesBolivia.Add(new City { Name = "Potosi" });
-            citiesBolivia.Add(new City { Name = "Cochabamba" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesBolivia,
-                Name = "Bolivia"
-            });
-
-            var citiesVenezuela = new List<City>();
-            citiesVenezuela.Add(new City { Name = "Caracas" });
-            citiesVenezuela.Add(new City { Name = "Valencia" });
-            citiesVenezuela.Add(new City { Name = "Maracaibo" });
-            citiesVenezuela.Add(new City { Name = "Ciudad Bolivar" });
-            citiesVenezuela.Add(new City { Name = "Maracay" });
-            citiesVenezuela.Add(new City { Name = "Barquisimeto" });
-
-            this.context.Countries.Add(new Country
-            {
-                Cities = citiesVenezuela,
-                Name = "Venezuela"
-            });
-
+            this.AddCountry("Colombia", new string[] { "Medellín", "Bogota", "Calí", "Barranquilla", "Bucaramanga", "Cartagena", "Pereira" });
+            this.AddCountry("Argentina", new string[] { "Córdoba", "Buenos Aires", "Rosario", "Tandil", "Salta", "Mendoza" });
+            this.AddCountry("Estados Unidos", new string[] { "New York", "Los Ángeles", "Chicago", "Washington", "San Francisco", "Miami", "Boston" });
+            this.AddCountry("Ecuador", new string[] { "Quito", "Guayaquil", "Ambato", "Manta", "Loja", "Santo" });
+            this.AddCountry("Peru", new string[] { "Lima", "Arequipa", "Cusco", "Trujillo", "Chiclayo", "Iquitos" });
+            this.AddCountry("Chile", new string[] { "Santiago", "Valdivia", "Concepcion", "Puerto Montt", "Temucos", "La Sirena" });
+            this.AddCountry("Uruguay", new string[] { "Montevideo", "Punta del Este", "Colonia del Sacramento", "Las Piedras" });
+            this.AddCountry("Bolivia", new string[] { "La Paz", "Sucre", "Potosi", "Cochabamba" });
+            this.AddCountry("Venezuela", new string[] { "Caracas", "Valencia", "Maracaibo", "Ciudad Bolivar", "Maracay", "Barquisimeto" });
+            this.AddCountry("Paraguay", new string[] { "Asunción", "Ciudad del Este", "Encarnación", "San  Lorenzo", "Luque", "Areguá" });
+            this.AddCountry("Brasil", new string[] { "Rio de Janeiro", "São Paulo", "Salvador", "Porto Alegre", "Curitiba", "Recife", "Belo Horizonte", "Fortaleza" });
             await this.context.SaveChangesAsync();
         }
 
-        private async Task CheckRoles()
+        private void AddCountry(string country, string[] cities)
+        {
+            var theCities = cities.Select(c => new City { Name = c }).ToList();
+            this.context.Countries.Add(new Country
+            {
+                Cities = theCities,
+                Name = country
+            });
+        }
+
+        private async Task CheckRolesAsync()
         {
             await this.userHelper.CheckRoleAsync("Admin");
             await this.userHelper.CheckRoleAsync("Customer");
