@@ -24,6 +24,9 @@
         [Display(Name = "Phone Number")]
         public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
 
+        [Display(Name = "Email Confirmed")]
+        public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
+
         [Display(Name = "Full Name")]
         public string FullName { get { return $"{this.FirstName} {this.LastName}"; }  }
 
