@@ -29,6 +29,17 @@
                     Placeholder="Enter your password..."
                     Text="{Binding Password}">
                 </Entry>
+                <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+                    <Label
+                        Text="Rememberme in this device"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        IsToggled="{Binding IsRemember}">
+                    </Switch>
+                </StackLayout>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">

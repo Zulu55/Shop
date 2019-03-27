@@ -4,15 +4,17 @@
     using Common.Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using Xamarin.Forms;
 
     public class ProductsViewModel : BaseViewModel
     {
         private readonly ApiService apiService;
-        private ObservableCollection<Product> products;
+        private List<Product> myProducts;
+        private ObservableCollection<ProductItemViewModel> products;
         private bool isRefreshing;
 
-        public ObservableCollection<Product> Products
+        public ObservableCollection<ProductItemViewModel> Products
         {
             get => this.products;
             set => this.SetValue(ref this.products, value);
@@ -53,8 +55,57 @@
                 return;
             }
 
-            var myProducts = (List<Product>)response.Result;
-            this.Products = new ObservableCollection<Product>(myProducts);
+            this.myProducts = (List<Product>)response.Result;
+            this.RefresProductsList();
+        }
+
+        public void AddProductToList(Product product)
+        {
+            this.myProducts.Add(product);
+            this.RefresProductsList();
+        }
+
+        public void UpdateProductInList(Product product)
+        {
+            var previousProduct = this.myProducts.Where(p => p.Id == product.Id).FirstOrDefault();
+            if (previousProduct != null)
+            {
+                this.myProducts.Remove(previousProduct);
+            }
+
+            this.myProducts.Add(product);
+            this.RefresProductsList();
+        }
+
+        public void DeleteProductInList(int productId)
+        {
+            var previousProduct = this.myProducts.Where(p => p.Id == productId).FirstOrDefault();
+            if (previousProduct != null)
+            {
+                this.myProducts.Remove(previousProduct);
+            }
+
+            this.RefresProductsList();
+        }
+
+        private void RefresProductsList()
+        {
+            this.Products = new ObservableCollection<ProductItemViewModel>(
+                this.myProducts.Select(p => new ProductItemViewModel
+            {
+                Id = p.Id,
+                ImageUrl = p.ImageUrl,
+                ImageFullPath = p.ImageFullPath,
+                IsAvailabe = p.IsAvailabe,
+                LastPurchase = p.LastPurchase,
+                LastSale = p.LastSale,
+                Name = p.Name,
+                Price = p.Price,
+                Stock = p.Stock,
+                User = p.User
+            })
+            .OrderBy(p => p.Name)
+            .ToList());
         }
     }
 }

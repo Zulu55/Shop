@@ -190,5 +190,96 @@
                 };
             }
         }
+
+        public async Task<Response> PutAsync<T>(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id,
+            T model,
+            string tokenType,
+            string accessToken)
+        {
+            try
+            {
+                var request = JsonConvert.SerializeObject(model);
+                var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                var url = $"{servicePrefix}{controller}/{id}";
+                var response = await client.PutAsync(url, content);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var obj = JsonConvert.DeserializeObject<T>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = obj,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
+        public async Task<Response> DeleteAsync(
+            string urlBase,
+            string servicePrefix,
+            string controller,
+            int id,
+            string tokenType,
+            string accessToken)
+        {
+            try
+            {
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                var url = $"{servicePrefix}{controller}/{id}";
+                var response = await client.DeleteAsync(url);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
     }
 }

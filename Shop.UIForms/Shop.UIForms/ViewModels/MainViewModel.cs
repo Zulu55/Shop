@@ -17,11 +17,17 @@ namespace Shop.UIForms.ViewModels
 
         public TokenResponse Token { get; set; }
 
+        public string UserEmail { get; set; }
+
+        public string UserPassword { get; set; }
+
         public LoginViewModel Login { get; set; }
 
         public ProductsViewModel Products { get; set; }
 
         public AddProductViewModel AddProduct { get; set; }
+
+        public EditProductViewModel EditProduct { get; set; }
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); }  }
 
