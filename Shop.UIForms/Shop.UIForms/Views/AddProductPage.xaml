@@ -10,8 +10,10 @@
             <StackLayout
                 Padding="10">
                 <Image
-                    HeightRequest="150"
-                    Source="{Binding Image}">
+                    Source="{Binding ImageSource}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
                 </Image>
                 <Label
                     FontSize="Micro"

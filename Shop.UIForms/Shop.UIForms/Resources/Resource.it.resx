@@ -129,4 +129,25 @@
   <data name="PasswordError" xml:space="preserve">
     <value>Immettere una password.</value>
   </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>Email o password errate.</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Accesso</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Posta elettronica</value>
+  </data>
+  <data name="EmailPlaceHolder" xml:space="preserve">
+    <value>Inserisci la tua email</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="PasswordPlaceHolder" xml:space="preserve">
+    <value>Immettere la password</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Ricordati di me in questo dispositivo!</value>
+  </data>
 </root>
