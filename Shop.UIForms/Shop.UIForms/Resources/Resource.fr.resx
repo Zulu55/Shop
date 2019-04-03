@@ -150,4 +150,10 @@
   <data name="Remember" xml:space="preserve">
     <value>Se souvenir de moi sur ce dispositif</value>
   </data>
+  <data name="RegisterNewUser" xml:space="preserve">
+    <value>Nouvel utilisateur</value>
+  </data>
+  <data name="Forgot" xml:space="preserve">
+    <value>J'ai oublié mon mot de passe</value>
+  </data>
 </root>
