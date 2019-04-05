@@ -97,7 +97,18 @@
             }
 
             var token = (TokenResponse)response.Result;
+
+            var response2 = await this.apiService.GetUserByEmailAsync(
+                url,
+                "/api",
+                "/Account/GetUserByEmail",
+                this.Email,
+                "bearer",
+                token.Token);
+
+            var user = (User)response2.Result;
             var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.User = user;
             mainViewModel.UserEmail = this.Email;
             mainViewModel.UserPassword = this.Password;
             mainViewModel.Token = token;
@@ -107,6 +118,7 @@
             Settings.UserEmail = this.Email;
             Settings.UserPassword = this.Password;
             Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.User = JsonConvert.SerializeObject(user);
 
             Application.Current.MainPage = new MasterPage();
         }

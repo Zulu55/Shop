@@ -13,6 +13,8 @@ namespace Shop.UIForms.ViewModels
     {
         private static MainViewModel instance;
 
+        public User User { get; set; }
+
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
         public TokenResponse Token { get; set; }
@@ -32,6 +34,10 @@ namespace Shop.UIForms.ViewModels
         public RegisterViewModel Register { get; set; }
 
         public RememberPasswordViewModel RememberPassword { get; set; }
+
+        public ProfileViewModel Profile { get; set; }
+
+        public ChangePasswordViewModel ChangePassword { get; set; }
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); }  }
 
@@ -56,6 +62,13 @@ namespace Shop.UIForms.ViewModels
                 Icon = "ic_info",
                 PageName = "AboutPage",
                 Title = "About"
+            },
+
+            new Menu
+            {
+                Icon = "ic_person",
+                PageName = "ProfilePage",
+                Title = "Modify User"
             },
 
             new Menu

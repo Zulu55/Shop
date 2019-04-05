@@ -5,6 +5,8 @@
     using Common.Models;
     using Data;
     using Helpers;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -128,5 +130,110 @@
                 Message = "An email with instructions to change the password was sent."
             });
         }
+
+        [HttpPost]
+        [Route("GetUserByEmail")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetUserByEmail([FromBody] RecoverPasswordRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request"
+                });
+            }
+
+            var user = await this.userHelper.GetUserByEmailAsync(request.Email);
+            if (user == null)
+            {
+                return this.BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "User don't exists."
+                });
+            }
+
+            return Ok(user);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutUser([FromBody] User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(ModelState);
+            }
+
+            var userEntity = await this.userHelper.GetUserByEmailAsync(user.Email);
+            if (userEntity == null)
+            {
+                return this.BadRequest("User not found.");
+            }
+
+            var city = await this.countryRepository.GetCityAsync(user.CityId);
+            if (city != null)
+            {
+                userEntity.City = city;
+            }
+
+            userEntity.FirstName = user.FirstName;
+            userEntity.LastName = user.LastName;
+            userEntity.CityId = user.CityId;
+            userEntity.Address = user.Address;
+            userEntity.PhoneNumber = user.PhoneNumber;
+
+            var respose = await this.userHelper.UpdateUserAsync(userEntity);
+            if (!respose.Succeeded)
+            {
+                return this.BadRequest(respose.Errors.FirstOrDefault().Description);
+            }
+
+            var updatedUser = await this.userHelper.GetUserByEmailAsync(user.Email);
+            return Ok(updatedUser);
+        }
+
+        [HttpPost]
+        [Route("ChangePassword")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "Bad request"
+                });
+            }
+
+            var user = await this.userHelper.GetUserByEmailAsync(request.Email);
+            if (user == null)
+            {
+                return this.BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = "This email is not assigned to any user."
+                });
+            }
+
+            var result = await this.userHelper.ChangePasswordAsync(user, request.OldPassword, request.NewPassword);
+            if (!result.Succeeded)
+            {
+                return this.BadRequest(new Response
+                {
+                    IsSuccess = false,
+                    Message = result.Errors.FirstOrDefault().Description
+                });
+            }
+
+            return this.Ok(new Response
+            {
+                IsSuccess = true,
+                Message = "The password was changed succesfully!"
+            });
+        }
+
     }
 }

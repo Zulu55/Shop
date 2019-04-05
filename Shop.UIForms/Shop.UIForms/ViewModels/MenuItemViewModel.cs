@@ -25,7 +25,12 @@
                 case "SetupPage":
                     await App.Navigator.PushAsync(new SetupPage());
                     break;
+                case "ProfilePage":
+                    mainViewModel.Profile = new ProfileViewModel();
+                    await App.Navigator.PushAsync(new ProfilePage());
+                    break;
                 default:
+                    Settings.User = string.Empty;
                     Settings.IsRemember = false;
                     Settings.Token = string.Empty;
                     Settings.UserEmail = string.Empty;
