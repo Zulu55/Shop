@@ -1,4 +1,6 @@
 <resources>
-    <string name="app_name">Shop.UIClassic.Android</string>
-    <string name="action_settings">Settings</string>
+  <string name="app_name">Shop</string>
+  <string name="login">Login</string>
+  <string name="products">Products</string>
+  <string name="action_settings">Settings</string>
 </resources>
