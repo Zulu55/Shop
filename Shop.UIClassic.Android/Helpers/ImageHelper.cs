@@ -7,6 +7,11 @@
     {
         public static Bitmap GetImageBitmapFromUrl(string url)
         {
+            if (string.IsNullOrEmpty(url))
+            {
+                return null;
+            }
+
             Bitmap imageBitmap = null;
 
             using (var webClient = new WebClient())

@@ -14,29 +14,23 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dip">
-        <RelativeLayout
+        android:paddingLeft="10dp">
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:textSize="24dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_alignParentLeft="true"
+            android:textStyle="bold"
+            android:gravity="left" />
+        <TextView
+            android:id="@+id/priceTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip">
-            <TextView
-                android:id="@+id/nameTextView"
-                android:layout_width="200dp"
-                android:textSize="24dp"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:layout_alignParentLeft="true"
-                android:textStyle="bold"
-                android:gravity="left" />
-            <TextView
-                android:id="@+id/priceTextView"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:gravity="left"
-                android:textSize="12dp"
-                android:textColor="@android:color/black"
-                android:layout_below="@+id/nameTextView" />
-        </RelativeLayout>
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:textSize="18dp"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 </LinearLayout>
