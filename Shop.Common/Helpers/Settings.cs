@@ -10,10 +10,17 @@
         private const string userPassword = "userPassword";
         private const string isRemember = "isRemember";
         private const string user = "user";
+        private const string products = "products";
         private static readonly string stringDefault = string.Empty;
         private static readonly bool boolDefault = false;
 
         private static ISettings AppSettings => CrossSettings.Current;
+
+        public static string Products
+        {
+            get => AppSettings.GetValueOrDefault(products, stringDefault);
+            set => AppSettings.AddOrUpdateValue(products, value);
+        }
 
         public static string User
         {
