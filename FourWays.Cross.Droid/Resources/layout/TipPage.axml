@@ -43,6 +43,6 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24dp"
-       android:gravity="center"
-        local:MvxBind="Text Tip" />
+        android:gravity="center"
+        local:MvxBind="Text Tip,Converter=DecimalToString" />
 </LinearLayout>
