@@ -1,4 +1,4 @@
-﻿namespace Shop.Common.Models
+﻿    namespace Shop.Common.Models
 {
     using System.ComponentModel.DataAnnotations;
 
