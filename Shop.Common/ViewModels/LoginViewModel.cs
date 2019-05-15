@@ -4,9 +4,11 @@
     using Interfaces;
     using Models;
     using MvvmCross.Commands;
+    using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
     using Services;
-
+    using Shop.Common.Helpers;
+    using Newtonsoft.Json;
     public class LoginViewModel : MvxViewModel
     {
         private string email;
@@ -14,6 +16,7 @@
         private MvxCommand loginCommand;
         private readonly IApiService apiService;
         private readonly IDialogService dialogService;
+        private readonly IMvxNavigationService navigationService;
         private bool isLoading;
 
         public bool IsLoading
@@ -45,10 +48,12 @@
 
         public LoginViewModel(
             IApiService apiService,
-            IDialogService dialogService)
+            IDialogService dialogService,
+            IMvxNavigationService navigationService)
         {
             this.apiService = apiService;
             this.dialogService = dialogService;
+            this.navigationService = navigationService;
 
             this.Email = "jzuluaga55@gmail.com";
             this.Password = "123456";
@@ -90,8 +95,11 @@
                 return;
             }
 
+            var token = (TokenResponse)response.Result;
+            Settings.UserEmail = this.Email;
+            Settings.Token = JsonConvert.SerializeObject(token);
             this.IsLoading = false;
-            this.dialogService.Alert("Ok", "Fuck yeah!", "Accept");
+            await this.navigationService.Navigate<ProductsViewModel>();
         }
     }
 }

@@ -14,14 +14,14 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_gravity="center"
-            android:src="@drawable/shop"
+            android:src="@drawable/noImage"
             android:layout_width="300dp"
             android:layout_height="200dp" />
         <TextView
-            android:text="Email"
+            android:text="Name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,31 +31,29 @@
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            local:MvxBind="Text Email" />
+            local:MvxBind="Text Name" />
         <TextView
-            android:text="Password"
+            android:text="Price"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="25px"
             android:minHeight="25px"/>
         <EditText
-            android:inputType="textPassword"
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            local:MvxBind="Text Password" />
+            local:MvxBind="Text Price" />
         <ProgressBar
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_gravity="center_vertical"
             local:MvxBind="Visibility Visibility(IsLoading)"
             android:indeterminateOnly="true"
             android:keepScreenOn="true"/>
+        <Button
+            android:text="Add Product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="Click AddProductCommand" />
     </LinearLayout>
-    <Button
-        android:text="Login"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        local:MvxBind="Click LoginCommand" />
 </RelativeLayout>

@@ -64,7 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Views\AddProductView.cs" />
     <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\ProductsView.cs" />
     <Compile Include="Views\SplashView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +108,9 @@
     <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.9.961</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shop.Common\Shop.Common.csproj">
@@ -131,6 +136,30 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ProductRow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ProductsPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\noImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\shop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\AddProductPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
