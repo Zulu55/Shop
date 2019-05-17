@@ -19,6 +19,17 @@
         private readonly IDialogService dialogService;
         private readonly IMvxNavigationService navigationService;
         private MvxCommand addProductCommand;
+        private MvxCommand<Product> itemClickCommand;
+
+        public ProductsViewModel(
+            IApiService apiService,
+            IDialogService dialogService,
+            IMvxNavigationService navigationService)
+        {
+            this.apiService = apiService;
+            this.dialogService = dialogService;
+            this.navigationService = navigationService;
+        }
 
         public ICommand AddProductCommand
         {
@@ -29,28 +40,37 @@
             }
         }
 
+        public ICommand ItemClickCommand
+        {
+            get
+            {
+                this.itemClickCommand = new MvxCommand<Product>(this.OnItemClickCommand);
+                return itemClickCommand;
+            }
+        }
+
         public List<Product> Products
         {
             get => this.products;
             set => this.SetProperty(ref this.products, value);
         }
 
-        public ProductsViewModel(
-            IApiService apiService,
-            IDialogService dialogService,
-            IMvxNavigationService navigationService)
+        public override void ViewAppeared()
         {
-            this.apiService = apiService;
-            this.dialogService = dialogService;
-            this.navigationService = navigationService;
+            base.ViewAppeared();
             this.LoadProducts();
+        }
+
+        private async void OnItemClickCommand(Product product)
+        {
+            await this.navigationService.Navigate<ProductsDetailViewModel, NavigationArgs>(
+                new NavigationArgs { Product = product });
         }
 
         private async void AddProduct()
         {
             await this.navigationService.Navigate<AddProductViewModel>();
         }
-
 
         private async void LoadProducts()
         {

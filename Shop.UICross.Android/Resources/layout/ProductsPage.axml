@@ -4,6 +4,7 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,9 +13,14 @@
         android:layout_margin="16dp"
         local:layout_anchorGravity="bottom|right|end"
         local:MvxBind="Click AddProductCommand" />
-    <MvxListView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        local:MvxBind="ItemsSource Products"
-        local:MvxItemTemplate="@layout/productrow"/>
+
+    <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
+        local:MvxItemTemplate="@layout/productrow"
+        local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
+
 </android.support.design.widget.CoordinatorLayout>

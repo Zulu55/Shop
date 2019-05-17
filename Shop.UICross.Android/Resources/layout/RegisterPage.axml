@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        local:layout_constraintLeft_toLeftOf="parent"
+        local:layout_constraintRight_toRightOf="parent"
+        android:text="Register"/>
+
+    <LinearLayout
+        android:id="@+id/firstName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/title_textView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="First name:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text FirstName"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/flastName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/firstName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Last name:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text LastName"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/emailName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/flastName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Email:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text Email"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/countryName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/emailName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textSize="18dp"
+            android:text="Country:"/>
+
+        <mvvmcross.platforms.android.binding.views.MvxSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="ItemsSource Countries;SelectedItem SelectedCountry"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cityName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/countryName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="City:"/>
+
+        <mvvmcross.platforms.android.binding.views.MvxSpinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="ItemsSource Cities;;SelectedItem SelectedCity"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addressName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/cityName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Address:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text Address"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/phoneName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/addressName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Phone:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text Phone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/passwordName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/phoneName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Password:"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text Password"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/confirmName_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toBottomOf="@+id/passwordName_layout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Password confirm"/>
+
+        <EditText
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            local:MvxBind="Text ConfirmPassword"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/newUserButton"
+        android:text="REGISTER NEW USER"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        local:MvxBind="Click RegisterCommand"
+        local:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/primary_button"/>
+
+</android.support.constraint.ConstraintLayout>

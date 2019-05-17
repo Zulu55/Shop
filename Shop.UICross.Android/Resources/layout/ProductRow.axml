@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <ffimageloading.cross.MvxCachedImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_margin="10dp"
-        local:MvxBind="ImagePath ImageFullPath" />
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            local:MvxBind="Text Name" />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            local:MvxBind="Text Price,Converter=DecimalToString" />
-    </LinearLayout>
-</LinearLayout>
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    local:cardElevation="5dp"
+    local:cardCornerRadius="6dp">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ffimageloading.cross.MvxCachedImageView
+            android:id="@+id/productImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            local:MvxBind="ImagePath ImageFullPath" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Product Description"
+            local:layout_constraintLeft_toRightOf="@+id/productImageView"
+            local:MvxBind="Text Name" />
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:layout_marginTop="6dp"
+            android:textSize="36dp"
+            tools:text="$16.99"
+            local:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            local:layout_constraintLeft_toRightOf="@+id/productImageView"
+            local:MvxBind="Text Price,Converter=DecimalToString" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>
