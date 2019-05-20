@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add"
+        android:layout_margin="16dp"
+        local:layout_anchorGravity="bottom|right|end"
+        local:MvxBind="Click AddProductCommand" />
+
+    <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
+        local:MvxItemTemplate="@layout/productrow"
+        local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
+
+</android.support.design.widget.CoordinatorLayout>
