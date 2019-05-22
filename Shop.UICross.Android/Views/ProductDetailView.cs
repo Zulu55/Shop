@@ -1,17 +1,34 @@
-﻿namespace Shop.UICross.Android.Views
-{
-    using Common.ViewModels;
-    using global::Android.App;
-    using global::Android.OS;
-    using MvvmCross.Platforms.Android.Views;
+﻿using Android.App;
+using Android.OS;
+using Android.Views;
+using MvvmCross.Droid.Support.V7.AppCompat;
+using Shop.Common.ViewModels;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
-    [Activity(Label = "@string/app_name")]
-    public class ProductDetailView : MvxActivity<ProductsDetailViewModel>
+namespace Shop.UICross.Android.Views
+{
+
+    [Activity(Label = "@string/product_details")]
+    public class ProductDetailView : MvxAppCompatActivity<ProductsDetailViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             this.SetContentView(Resource.Layout.ProductDetailPage);
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+
+            var actionBar = SupportActionBar;
+            if (actionBar != null)
+            {
+                actionBar.SetDisplayHomeAsUpEnabled(true);
+            }
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == global::Android.Resource.Id.Home) { OnBackPressed(); }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

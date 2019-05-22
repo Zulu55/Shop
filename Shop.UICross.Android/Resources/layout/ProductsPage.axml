@@ -14,13 +14,25 @@
         local:layout_anchorGravity="bottom|right|end"
         local:MvxBind="Click AddProductCommand" />
 
-    <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
-        local:MvxItemTemplate="@layout/productrow"
-        local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <include
+            layout="@layout/toolbar" />
+
+        <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
+            local:MvxItemTemplate="@layout/productrow"
+            local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
+
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
