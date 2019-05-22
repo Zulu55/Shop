@@ -42,7 +42,7 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Text Password"
@@ -62,6 +62,7 @@
         <Button
             android:id="@+id/loginButton"
             android:text="LOGIN"
+            android:textColor="#FFFFFF"
             android:layout_width="150dp"
             android:layout_marginLeft="25dp"
             android:layout_height="wrap_content"

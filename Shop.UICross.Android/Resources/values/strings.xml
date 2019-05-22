@@ -1,5 +1,7 @@
 <resources>
   <string name="app_name">Shop</string>
   <string name="add_product">Add Product</string>
-  <string name="action_settings">Settings</string>
+  <string name="register">Register New User</string>
+  <string name="product_details">Product Details</string>
+  <string name="products">Shop Products</string>
 </resources>
