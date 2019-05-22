@@ -1,5 +1,6 @@
 ﻿namespace Shop.Common.ViewModels
 {
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Helpers;
     using Interfaces;
@@ -61,9 +62,19 @@
             }
         }
 
-        private async void Delete()
+        private void Delete()
         {
-            //TODO: Ask for confirmation
+            this.dialogService.Confirm(
+                "Confirm",
+                "This action can't be undone, are you sure to delete the product?",
+                "Yes",
+                "No",
+                () => { this.ConfirmDelete(); },
+                null);
+        }
+
+        private async Task ConfirmDelete()
+        {
             this.IsLoading = true;
 
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
