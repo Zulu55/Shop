@@ -66,6 +66,8 @@
     <Compile Include="Services\NetworkProvider.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Views\AddProductView.cs" />
+    <Compile Include="Views\ChangePasswordView.cs" />
+    <Compile Include="Views\EditUserView.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\ProductDetailView.cs" />
     <Compile Include="Views\ProductsView.cs" />
@@ -194,6 +196,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Toolbar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\EditUserPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ChangePasswordPage.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

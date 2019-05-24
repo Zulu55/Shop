@@ -121,6 +121,18 @@
             }
 
             var token = (TokenResponse)response.Result;
+
+            var response2 = await this.apiService.GetUserByEmailAsync(
+                "https://shopzulu.azurewebsites.net",
+                "/api",
+                "/Account/GetUserByEmail",
+                this.Email,
+                "bearer",
+                token.Token);
+
+            var user = (User)response2.Result;
+            Settings.UserPassword = this.Password;
+            Settings.User = JsonConvert.SerializeObject(user);
             Settings.UserEmail = this.Email;
             Settings.Token = JsonConvert.SerializeObject(token);
             this.IsLoading = false;
