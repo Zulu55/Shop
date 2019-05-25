@@ -9,6 +9,12 @@
             string title, 
             string okbtnText);
 
+        void Alert(
+            string message,
+            string title,
+            string okbtnText,
+            Action confirmed);
+
         void Confirm(
             string title, 
             string message, 

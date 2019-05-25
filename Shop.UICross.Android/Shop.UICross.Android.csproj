@@ -63,9 +63,16 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\MvxAndroidFileStore.cs" />
+    <Compile Include="Services\MvxBaseFileStoreService.cs" />
+    <Compile Include="Services\MvxPictureChooserTask.cs" />
+    <Compile Include="Services\MyImageView.cs" />
     <Compile Include="Services\NetworkProvider.cs" />
+    <Compile Include="Services\PictureService.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Views\AddProductView.cs" />
+    <Compile Include="Views\ChangePasswordView.cs" />
+    <Compile Include="Views\EditUserView.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\ProductDetailView.cs" />
     <Compile Include="Views\ProductsView.cs" />
@@ -194,6 +201,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Toolbar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\ChangePasswordPage.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\EditUserPage.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
