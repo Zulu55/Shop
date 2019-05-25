@@ -1,38 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:src="@drawable/ic_add"
-        android:layout_margin="16dp"
-        local:layout_anchorGravity="bottom|right|end"
-        local:MvxBind="Click AddProductCommand" />
-
     <LinearLayout
-        android:id="@+id/header_layout"
-        android:orientation="vertical"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
             layout="@layout/toolbar" />
 
-        <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+        <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
-            local:MvxItemTemplate="@layout/productrow"
-            local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
-
+            android:layout_height="match_parent" />
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="80dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/ic_add"
+            android:layout_margin="16dp"
+            local:layout_anchorGravity="bottom|right|end"
+            local:MvxBind="Click AddProductCommand" />
+
+        <LinearLayout
+            android:id="@+id/header_layout"
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <mvvmcross.droid.support.v7.recyclerview.MvxRecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                local:layout_constraintTop_toBottomOf="@+id/toolbar_cross"
+                local:MvxItemTemplate="@layout/productrow"
+                local:MvxBind="ItemsSource Products;ItemClick ItemClickCommand;"/>
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+    <ListView
+        android:id="@+id/drawerListView"
+        android:layout_gravity="start"
+        android:choiceMode="singleChoice"
+        android:layout_width="240dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:layout_height="match_parent"
+        android:background="?android:attr/windowBackground" />
+</android.support.v4.widget.DrawerLayout>
