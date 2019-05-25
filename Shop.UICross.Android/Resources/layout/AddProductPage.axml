@@ -27,10 +27,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_gravity="center"
-                android:src="@drawable/noImage"
-                android:layout_width="300dp"
+            <Shop.UICross.Android.Services.MyImageView 
+                android:layout_gravity="center" 
+                android:src="@drawable/noImage" 
+                android:layout_width="300dp" 
+                local:MvxBind="Click SelectPictureCommand;Bitmap ByteArrayToImage(TheRawImageBytes)" 
                 android:layout_height="200dp" />
 
             <TextView

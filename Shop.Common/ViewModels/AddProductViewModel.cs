@@ -1,6 +1,5 @@
 ﻿namespace Shop.Common.ViewModels
 {
-    using System.Windows.Input;
     using Helpers;
     using Interfaces;
     using Models;
@@ -9,16 +8,42 @@
     using MvvmCross.ViewModels;
     using Newtonsoft.Json;
     using Services;
+    using System.Windows.Input;
 
     public class AddProductViewModel : MvxViewModel
     {
         private string name;
         private string price;
-        private MvxCommand addProductCommand;
         private readonly IApiService apiService;
         private readonly IDialogService dialogService;
         private readonly IMvxNavigationService navigationService;
+        private readonly IPictureService pictureService;
         private bool isLoading;
+        private byte[] theRawImageBytes;
+        private MvxCommand addProductCommand;
+        private MvxCommand selectPictureCommand;
+
+        public AddProductViewModel(
+            IApiService apiService,
+            IDialogService dialogService,
+            IMvxNavigationService navigationService,
+            IPictureService pictureService)
+        {
+            this.apiService = apiService;
+            this.dialogService = dialogService;
+            this.navigationService = navigationService;
+            this.pictureService = pictureService;
+        }
+
+        public byte[] TheRawImageBytes
+        {
+            get => this.theRawImageBytes;
+            set
+            {
+                this.theRawImageBytes = value;
+                RaisePropertyChanged(() => TheRawImageBytes);
+            }
+        }
 
         public bool IsLoading
         {
@@ -47,14 +72,29 @@
             }
         }
 
-        public AddProductViewModel(
-            IApiService apiService,
-            IDialogService dialogService,
-            IMvxNavigationService navigationService)
+        public ICommand SelectPictureCommand
         {
-            this.apiService = apiService;
-            this.dialogService = dialogService;
-            this.navigationService = navigationService;
+            get
+            {
+                this.selectPictureCommand = this.selectPictureCommand ?? new MvxCommand(this.AddPictureFromCameraOrGallery);
+                return this.selectPictureCommand;
+            }
+        }
+
+        private void AddPictureFromCameraOrGallery()
+        {
+            this.dialogService.Confirm(
+                "Confirm",
+                "Select your photo from",
+                "Camera",
+                "Gallery",
+                () => { this.pictureService.TakeNewPhoto(ProcessPhoto, null); },
+                () => { this.pictureService.SelectExistingPicture(ProcessPhoto, null); });
+        }
+
+        private void ProcessPhoto(byte[] image)
+        {
+            this.TheRawImageBytes = image;
         }
 
         private async void AddProduct()
@@ -80,13 +120,13 @@
 
             this.IsLoading = true;
 
-            //TODO: Image pending
             var product = new Product
             {
                 IsAvailabe = true,
                 Name = this.Name,
                 Price = price,
                 User = new User { UserName = Settings.UserEmail },
+                ImageArray = this.TheRawImageBytes
             };
 
             var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);

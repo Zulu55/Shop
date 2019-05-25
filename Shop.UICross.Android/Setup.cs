@@ -13,8 +13,11 @@
     {
         protected override void InitializeFirstChance()
         {
-            Mvx.IoCProvider.RegisterType<IDialogService, DialogService>();
             Mvx.LazyConstructAndRegisterSingleton<INetworkProvider, NetworkProvider>();
+            Mvx.IoCProvider.RegisterType<IDialogService, DialogService>();
+            Mvx.IoCProvider.RegisterType<IPictureService, PictureService>();
+            Mvx.IoCProvider.RegisterType<IMvxPictureChooserTask, MvxPictureChooserTask>();
+            Mvx.IoCProvider.RegisterType<IMvxSimpleFileStoreService, MvxAndroidFileStore>();
 
             base.InitializeFirstChance();
         }
