@@ -4,4 +4,8 @@
   <string name="register">Register New User</string>
   <string name="product_details">Product Details</string>
   <string name="products">Shop Products</string>
+  <string name="edit_user">Edit User</string>
+  <string name="change_password">Change Password</string>
+  <string name="navigation_drawer_open">navigation_drawer_open</string>
+  <string name="navigation_drawer_closed">navigation_drawer_closed</string>
 </resources>

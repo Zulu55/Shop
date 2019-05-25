@@ -8,6 +8,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/mainContainer"
         android:orientation="vertical"
         android:minWidth="25px"
         android:minHeight="25px"
@@ -18,6 +19,7 @@
             layout="@layout/toolbar" />
 
         <LinearLayout
+            android:id="@+id/controlsContainer"
             android:orientation="vertical"
             android:paddingTop="10dp"
             android:paddingLeft="10dp"
@@ -25,13 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <Shop.UICross.Android.Services.MyImageView
                 android:layout_gravity="center"
                 android:src="@drawable/noImage"
                 android:layout_width="300dp"
+                local:MvxBind="Click SelectPictureCommand;Bitmap ByteArrayToImage(TheRawImageBytes)"
                 android:layout_height="200dp" />
-            
-                <TextView
+
+            <TextView
                 android:text="Name"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
@@ -59,34 +62,28 @@
                 android:layout_height="wrap_content"
                 local:MvxBind="Text Price" />
 
-            <ProgressBar
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                local:MvxBind="Visibility Visibility(IsLoading)"
-                android:indeterminateOnly="true"
-                android:keepScreenOn="true"/>
         </LinearLayout>
-
     </LinearLayout>
-    
-    <LinearLayout
-            local:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
+    <ProgressBar
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        local:MvxBind="Visibility Visibility(IsLoading)"
+        android:indeterminateOnly="true"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/mainContainer"
+        android:keepScreenOn="true"/>
+
     <Button
         android:id="@+id/saveButton"
+        android:layout_margin="10dp"
         android:text="Save"
-        android:textColor="#FFFFFF"    
+        android:textColor="#FFFFFF"
+        local:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         local:MvxBind="Click AddProductCommand"
         android:background="@drawable/primary_button"/>
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

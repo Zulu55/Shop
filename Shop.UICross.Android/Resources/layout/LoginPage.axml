@@ -9,6 +9,7 @@
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
     android:paddingTop="15dp">
+
     <ImageView
         android:id="@+id/imageViewEmail"
         android:src="@drawable/shop"
@@ -53,18 +54,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:paddingBottom="10dp">
 
         <Button
             android:id="@+id/loginButton"
             android:text="LOGIN"
             android:textColor="#FFFFFF"
-            android:layout_width="150dp"
-            android:layout_marginLeft="25dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:background="@drawable/primary_button"
@@ -73,20 +72,19 @@
         <Button
             android:id="@+id/newUserButton"
             android:text="NEW USER"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/secondary_button"
             local:MvxBind="Click RegisterCommand"/>
-
     </LinearLayout>
 
     <ProgressBar
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonContainer"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/buttonContainer"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
         local:MvxBind="Visibility Visibility(IsLoading)"
         android:indeterminateOnly="true"
         android:keepScreenOn="true"/>
