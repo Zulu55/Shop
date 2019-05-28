@@ -16,7 +16,7 @@ namespace Shop.UICross.Android.Views
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class ProductsView : MvxAppCompatActivity<ProductsViewModel>
     {
-        private readonly string[] menuOptions = { "Add Product", "Edit User", "Change Password", "Close Session" };
+        private readonly string[] menuOptions = { "Add Product", "Edit User", "Change Password", "Maps", "Close Session" };
         private ListView drawerListView;
         private DrawerLayout drawer;
         private ActionBarDrawerToggle toggle;
@@ -58,6 +58,9 @@ namespace Shop.UICross.Android.Views
                     StartActivity(typeof(ChangePasswordView));
                     break;
                 case 3:
+                    StartActivity(typeof(MapsView));
+                    break;
+                case 4:
                     OnBackPressed();
                     break;
             }

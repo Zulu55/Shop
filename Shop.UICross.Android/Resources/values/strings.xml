@@ -8,4 +8,6 @@
   <string name="change_password">Change Password</string>
   <string name="navigation_drawer_open">navigation_drawer_open</string>
   <string name="navigation_drawer_closed">navigation_drawer_closed</string>
+  <string name="maps">Maps</string>
+  <string name="google_maps_key">AIkaljdsflkasdfjlajlfdLcfDQXvQvdUR1Xt-kUw</string>
 </resources>
