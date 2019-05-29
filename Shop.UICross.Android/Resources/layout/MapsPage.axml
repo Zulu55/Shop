@@ -17,14 +17,37 @@
 
         <include
             layout="@layout/toolbar" />
- 
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="26dp"
+            android:text="You are at"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/txtCoordinates"
+            android:layout_marginTop="20dp"
+            android:textSize="26dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnGetCoord"
+            android:text="Get Coordinates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnTrackingLocation"
+            android:text="Start Location Update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <fragment
-        
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:name="com.google.android.gms.maps.MapFragment"/>
     </LinearLayout>
-  
-       
+
 </android.support.constraint.ConstraintLayout>

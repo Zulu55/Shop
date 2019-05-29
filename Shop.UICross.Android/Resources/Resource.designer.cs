@@ -7531,8 +7531,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d004b
 			public const int SYM = 2131558475;
 			
-			// aapt resource value: 0x7f0d00e2
-			public const int action0 = 2131558626;
+			// aapt resource value: 0x7f0d00e5
+			public const int action0 = 2131558629;
 			
 			// aapt resource value: 0x7f0d00a5
 			public const int action_bar = 2131558565;
@@ -7555,17 +7555,17 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0081
 			public const int action_bar_title = 2131558529;
 			
-			// aapt resource value: 0x7f0d00df
-			public const int action_container = 2131558623;
+			// aapt resource value: 0x7f0d00e2
+			public const int action_container = 2131558626;
 			
 			// aapt resource value: 0x7f0d00a6
 			public const int action_context_bar = 2131558566;
 			
-			// aapt resource value: 0x7f0d00e6
-			public const int action_divider = 2131558630;
+			// aapt resource value: 0x7f0d00e9
+			public const int action_divider = 2131558633;
 			
-			// aapt resource value: 0x7f0d00e0
-			public const int action_image = 2131558624;
+			// aapt resource value: 0x7f0d00e3
+			public const int action_image = 2131558627;
 			
 			// aapt resource value: 0x7f0d0003
 			public const int action_menu_divider = 2131558403;
@@ -7582,11 +7582,11 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0083
 			public const int action_mode_close_button = 2131558531;
 			
-			// aapt resource value: 0x7f0d00e1
-			public const int action_text = 2131558625;
+			// aapt resource value: 0x7f0d00e4
+			public const int action_text = 2131558628;
 			
-			// aapt resource value: 0x7f0d00ef
-			public const int actions = 2131558639;
+			// aapt resource value: 0x7f0d00f2
+			public const int actions = 2131558642;
 			
 			// aapt resource value: 0x7f0d0084
 			public const int activity_chooser_view_content = 2131558532;
@@ -7645,14 +7645,20 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d00b8
 			public const int browser_actions_menu_view = 2131558584;
 			
+			// aapt resource value: 0x7f0d00df
+			public const int btnGetCoord = 2131558623;
+			
+			// aapt resource value: 0x7f0d00e0
+			public const int btnTrackingLocation = 2131558624;
+			
 			// aapt resource value: 0x7f0d00db
 			public const int buttonContainer = 2131558619;
 			
 			// aapt resource value: 0x7f0d008a
 			public const int buttonPanel = 2131558538;
 			
-			// aapt resource value: 0x7f0d00e3
-			public const int cancel_action = 2131558627;
+			// aapt resource value: 0x7f0d00e6
+			public const int cancel_action = 2131558630;
 			
 			// aapt resource value: 0x7f0d0059
 			public const int center = 2131558489;
@@ -7672,8 +7678,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d009e
 			public const int checkbox = 2131558558;
 			
-			// aapt resource value: 0x7f0d00eb
-			public const int chronometer = 2131558635;
+			// aapt resource value: 0x7f0d00ee
+			public const int chronometer = 2131558638;
 			
 			// aapt resource value: 0x7f0d00d4
 			public const int cityName_layout = 2131558612;
@@ -7726,8 +7732,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0087
 			public const int default_activity_button = 2131558535;
 			
-			// aapt resource value: 0x7f0d00f4
-			public const int deleteButton = 2131558644;
+			// aapt resource value: 0x7f0d00f7
+			public const int deleteButton = 2131558647;
 			
 			// aapt resource value: 0x7f0d00c9
 			public const int design_bottom_sheet = 2131558601;
@@ -7753,11 +7759,11 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0035
 			public const int disableHome = 2131558453;
 			
-			// aapt resource value: 0x7f0d00f7
-			public const int drawerLayout = 2131558647;
+			// aapt resource value: 0x7f0d00fa
+			public const int drawerLayout = 2131558650;
 			
-			// aapt resource value: 0x7f0d00fb
-			public const int drawerListView = 2131558651;
+			// aapt resource value: 0x7f0d00fe
+			public const int drawerListView = 2131558654;
 			
 			// aapt resource value: 0x7f0d00d8
 			public const int editTextEmail = 2131558616;
@@ -7774,8 +7780,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0044
 			public const int end = 2131558468;
 			
-			// aapt resource value: 0x7f0d00f1
-			public const int end_padder = 2131558641;
+			// aapt resource value: 0x7f0d00f4
+			public const int end_padder = 2131558644;
 			
 			// aapt resource value: 0x7f0d0053
 			public const int enterAlways = 2131558483;
@@ -7816,8 +7822,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d007f
 			public const int forever = 2131558527;
 			
-			// aapt resource value: 0x7f0d00f8
-			public const int frameLayout = 2131558648;
+			// aapt resource value: 0x7f0d00fb
+			public const int frameLayout = 2131558651;
 			
 			// aapt resource value: 0x7f0d000a
 			public const int ghost_view = 2131558410;
@@ -7828,8 +7834,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0099
 			public const int group_divider = 2131558553;
 			
-			// aapt resource value: 0x7f0d00f9
-			public const int header_layout = 2131558649;
+			// aapt resource value: 0x7f0d00fc
+			public const int header_layout = 2131558652;
 			
 			// aapt resource value: 0x7f0d0005
 			public const int home = 2131558405;
@@ -7843,8 +7849,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0089
 			public const int icon = 2131558537;
 			
-			// aapt resource value: 0x7f0d00f0
-			public const int icon_group = 2131558640;
+			// aapt resource value: 0x7f0d00f3
+			public const int icon_group = 2131558643;
 			
 			// aapt resource value: 0x7f0d002d
 			public const int icon_only = 2131558445;
@@ -7858,8 +7864,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d00d6
 			public const int imageViewEmail = 2131558614;
 			
-			// aapt resource value: 0x7f0d00ec
-			public const int info = 2131558636;
+			// aapt resource value: 0x7f0d00ef
+			public const int info = 2131558639;
 			
 			// aapt resource value: 0x7f0d0072
 			public const int invisible = 2131558514;
@@ -7900,14 +7906,14 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d00b5
 			public const int mainContainer = 2131558581;
 			
-			// aapt resource value: 0x7f0d00de
-			public const int map = 2131558622;
+			// aapt resource value: 0x7f0d00e1
+			public const int map = 2131558625;
 			
-			// aapt resource value: 0x7f0d00fd
-			public const int masked = 2131558653;
+			// aapt resource value: 0x7f0d0100
+			public const int masked = 2131558656;
 			
-			// aapt resource value: 0x7f0d00e5
-			public const int media_actions = 2131558629;
+			// aapt resource value: 0x7f0d00e8
+			public const int media_actions = 2131558632;
 			
 			// aapt resource value: 0x7f0d00b4
 			public const int message = 2131558580;
@@ -7927,8 +7933,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d003c
 			public const int multiply = 2131558460;
 			
-			// aapt resource value: 0x7f0d00f5
-			public const int nameTextView = 2131558645;
+			// aapt resource value: 0x7f0d00f8
+			public const int nameTextView = 2131558648;
 			
 			// aapt resource value: 0x7f0d00ca
 			public const int navigation_header_container = 2131558602;
@@ -7948,14 +7954,14 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0028
 			public const int normal = 2131558440;
 			
-			// aapt resource value: 0x7f0d00ee
-			public const int notification_background = 2131558638;
+			// aapt resource value: 0x7f0d00f1
+			public const int notification_background = 2131558641;
 			
-			// aapt resource value: 0x7f0d00e8
-			public const int notification_main_column = 2131558632;
+			// aapt resource value: 0x7f0d00eb
+			public const int notification_main_column = 2131558635;
 			
-			// aapt resource value: 0x7f0d00e7
-			public const int notification_main_column_container = 2131558631;
+			// aapt resource value: 0x7f0d00ea
+			public const int notification_main_column_container = 2131558634;
 			
 			// aapt resource value: 0x7f0d006c
 			public const int outline = 2131558508;
@@ -7987,11 +7993,11 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0064
 			public const int pin = 2131558500;
 			
-			// aapt resource value: 0x7f0d00f6
-			public const int priceTextView = 2131558646;
+			// aapt resource value: 0x7f0d00f9
+			public const int priceTextView = 2131558649;
 			
-			// aapt resource value: 0x7f0d00f2
-			public const int productImageView = 2131558642;
+			// aapt resource value: 0x7f0d00f5
+			public const int productImageView = 2131558645;
 			
 			// aapt resource value: 0x7f0d0006
 			public const int progress_circular = 2131558406;
@@ -8005,11 +8011,11 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0061
 			public const int right = 2131558497;
 			
-			// aapt resource value: 0x7f0d00ed
-			public const int right_icon = 2131558637;
+			// aapt resource value: 0x7f0d00f0
+			public const int right_icon = 2131558640;
 			
-			// aapt resource value: 0x7f0d00e9
-			public const int right_side = 2131558633;
+			// aapt resource value: 0x7f0d00ec
+			public const int right_side = 2131558636;
 			
 			// aapt resource value: 0x7f0d0029
 			public const int satellite = 2131558441;
@@ -8134,8 +8140,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0062
 			public const int start = 2131558498;
 			
-			// aapt resource value: 0x7f0d00e4
-			public const int status_bar_latest_event_content = 2131558628;
+			// aapt resource value: 0x7f0d00e7
+			public const int status_bar_latest_event_content = 2131558631;
 			
 			// aapt resource value: 0x7f0d0067
 			public const int stretch = 2131558503;
@@ -8194,8 +8200,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d001a
 			public const int textinput_helper_text = 2131558426;
 			
-			// aapt resource value: 0x7f0d00ea
-			public const int time = 2131558634;
+			// aapt resource value: 0x7f0d00ed
+			public const int time = 2131558637;
 			
 			// aapt resource value: 0x7f0d0023
 			public const int title = 2131558435;
@@ -8209,8 +8215,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d00bd
 			public const int toolbar = 2131558589;
 			
-			// aapt resource value: 0x7f0d00fa
-			public const int toolbar_cross = 2131558650;
+			// aapt resource value: 0x7f0d00fd
+			public const int toolbar_cross = 2131558653;
 			
 			// aapt resource value: 0x7f0d0052
 			public const int top = 2131558482;
@@ -8236,6 +8242,9 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0013
 			public const int transition_transform = 2131558419;
 			
+			// aapt resource value: 0x7f0d00de
+			public const int txtCoordinates = 2131558622;
+			
 			// aapt resource value: 0x7f0d0041
 			public const int uniform = 2131558465;
 			
@@ -8245,8 +8254,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d0009
 			public const int up = 2131558409;
 			
-			// aapt resource value: 0x7f0d00f3
-			public const int updateButton = 2131558643;
+			// aapt resource value: 0x7f0d00f6
+			public const int updateButton = 2131558646;
 			
 			// aapt resource value: 0x7f0d003a
 			public const int useLogo = 2131558458;
@@ -8254,8 +8263,8 @@ namespace Shop.UICross.Android
 			// aapt resource value: 0x7f0d001b
 			public const int view_offset_helper = 2131558427;
 			
-			// aapt resource value: 0x7f0d00fc
-			public const int visible = 2131558652;
+			// aapt resource value: 0x7f0d00ff
+			public const int visible = 2131558655;
 			
 			// aapt resource value: 0x7f0d002f
 			public const int wide = 2131558447;
