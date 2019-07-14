@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Shop.UIPrism.Views.Product"
+             Title="{Binding Title}">
+    <ScrollView>
+        <StackLayout
+            Padding="10">
+            <Image
+                HeightRequest="150"
+                Source="{Binding ImageSource}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label
+                FontSize="Micro"
+                HorizontalOptions="Center"
+                Text="Tap the image to change it...">
+            </Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Name"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Placeholder="Product name..."
+                    Text="{Binding Product.Name}">
+                </Entry>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Price"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Keyboard="Numeric"
+                    Placeholder="Product price..."
+                    Text="{Binding Product.Price}">
+                </Entry>
+            </Grid>
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning}"
+                VerticalOptions="CenterAndExpand">
+            </ActivityIndicator>
+            <StackLayout
+                Orientation="Horizontal">
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Save"
+                    TextColor="White">
+                </Button>
+                <Button
+                    BackgroundColor="Red"
+                    BorderRadius="23"
+                    Command="{Binding DeleteCommand}"
+                    HeightRequest="46"
+                    HorizontalOptions="FillAndExpand"
+                    IsEnabled="{Binding IsEnabled}"
+                    IsVisible="{Binding IsEdit}"
+                    Text="Delete"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

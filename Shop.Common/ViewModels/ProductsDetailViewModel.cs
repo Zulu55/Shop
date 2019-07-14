@@ -64,7 +64,8 @@
 
         private void Delete()
         {
-            this.dialogService.Confirm(
+            this.dialogService.CustomAlert(
+                DialogType.Question,
                 "Confirm",
                 "This action can't be undone, are you sure to delete the product?",
                 "Yes",

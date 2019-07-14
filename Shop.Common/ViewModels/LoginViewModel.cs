@@ -116,7 +116,12 @@
             if (!response.IsSuccess)
             {
                 this.IsLoading = false;
-                this.dialogService.Alert("Error", "User or password incorrect.", "Accept");
+                this.dialogService.CustomAlert(
+                    DialogType.Warning, 
+                    "Error", 
+                    "User or password incorrect.", 
+                    "Accept", 
+                    null);
                 return;
             }
 

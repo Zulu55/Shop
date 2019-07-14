@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:Shop.UIPrism.Converters"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             x:Class="Shop.UIPrism.App">
+	<Application.Resources>
+        <ResourceDictionary>
+
+            <!-- Parameters -->
+            <x:String x:Key="UrlAPI">https://shopzulu.azurewebsites.net</x:String>
+            
+            <!-- Converters -->
+            <converter:NegateBooleanConverter x:Key="NegateBooleanConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

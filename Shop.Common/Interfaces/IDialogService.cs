@@ -1,5 +1,6 @@
 ﻿namespace Shop.Common.Interfaces
 {
+    using Models;
     using System;
 
     public interface IDialogService
@@ -21,6 +22,22 @@
             string okButtonTitle, 
             string dismissButtonTitle, 
             Action confirmed, 
+            Action dismissed);
+
+        void CustomAlert(
+            DialogType dialogType,
+            string title,
+            string message,
+            string okbtnText,
+            Action confirmed);
+
+        void CustomAlert(
+            DialogType dialogType,
+            string title,
+            string message,
+            string okButtonTitle,
+            string dismissButtonTitle,
+            Action confirmed,
             Action dismissed);
     }
 }

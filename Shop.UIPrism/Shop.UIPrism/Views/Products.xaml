@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Shop.UIPrism.Views.Products"
+             Title="{Binding Title}">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout
+        Padding="10">
+        <ListView
+            IsRefreshing="{Binding IsRefreshing}"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Products}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectProductCommand}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Source="{Binding ImageFullPath}"
+                                WidthRequest="100">
+                            </Image>
+                            <StackLayout
+                                Grid.Column="1"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Medium"
+                                    Text="{Binding Name}"
+                                    TextColor="Black">
+                                </Label>
+                                <Label
+                                    Text="{Binding Price, StringFormat='Price: {0:C2}'}"
+                                    TextColor="Navy">
+                                </Label>
+                                <Label
+                                    Text="{Binding Stock, StringFormat='Stock: {0:N2}'}"
+                                    TextColor="Black">
+                                </Label>
+                            </StackLayout>
+                            <Image
+                                Grid.Column="2"
+                                Source="ic_chevron_right">
+                            </Image>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>  
+</ContentPage>
