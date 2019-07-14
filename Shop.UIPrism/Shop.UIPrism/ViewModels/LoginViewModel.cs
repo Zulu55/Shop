@@ -73,20 +73,35 @@ namespace Shop.UIPrism.ViewModels
             var url = App.Current.Resources["UrlAPI"].ToString();
             var response = await _apiService.GetTokenAsync(url, "/Account", "/CreateToken", request);
 
-            IsEnabled = true;
-            IsRunning = false;
-
             if (!response.IsSuccess)
             {
+                IsEnabled = true;
+                IsRunning = false;
                 await App.Current.MainPage.DisplayAlert("Error", "User or password incorrect.", "Accept");
                 Password = string.Empty;
                 return;
             }
 
+            var token = (TokenResponse)response.Result;
+
+            var response2 = await _apiService.GetUserByEmailAsync(
+                url,
+                "/api",
+                "/Account/GetUserByEmail",
+                this.UserName,
+                "bearer",
+                token.Token);
+
+            var user = (User)response2.Result;
+
             var parameters = new NavigationParameters
             {
-                { "token", response.Result }
+                { "token", token },
+                { "user", user }
             };
+
+            IsEnabled = true;
+            IsRunning = false;
 
             await _navigationService.NavigateAsync("Products", parameters);
         }

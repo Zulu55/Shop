@@ -14,6 +14,7 @@ namespace Shop.UIPrism.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private TokenResponse _tokenResponse;
+        private User _user;
         private bool _isRefreshing;
         private ObservableCollection<ProductItemViewModel> _products;
         private DelegateCommand _addProductCommand;
@@ -30,6 +31,8 @@ namespace Shop.UIPrism.ViewModels
         public DelegateCommand AddProductCommand => _addProductCommand ?? (_addProductCommand = new DelegateCommand(AddProduct));
 
         public TokenResponse TokenResponse => _tokenResponse;
+
+        public User User => _user;
 
         public bool IsRefreshing
         {
@@ -51,9 +54,15 @@ namespace Shop.UIPrism.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+
             if (parameters.ContainsKey("token"))
             {
                 _tokenResponse = parameters.GetValue<TokenResponse>("token");
+            }
+
+            if (parameters.ContainsKey("user"))
+            {
+                _user = parameters.GetValue<User>("user");
             }
 
             LoadProductsAsycn();

@@ -2,7 +2,6 @@
 using Prism.Navigation;
 using Shop.Common.Models;
 using Shop.Common.Services;
-using System;
 using Xamarin.Forms;
 
 namespace Shop.UIPrism.ViewModels
@@ -75,7 +74,11 @@ namespace Shop.UIPrism.ViewModels
             }
             else
             {
-                Product = new Product();
+                Product = new Product
+                {
+                    User = ProductsViewModel.GetInstance().User
+                };
+
                 Title = "New Product";
                 ImageSource = "noImage";
                 IsEdit = false;
@@ -123,12 +126,69 @@ namespace Shop.UIPrism.ViewModels
 
         private async void Save()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(this.Product.Name))
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "You must enter a product name.",
+                    "Accept");
+                return;
+            }
+
+            if (this.Product.Price <= 0)
+            {
+                await App.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "The price must be a number greather than zero.",
+                    "Accept");
+                return;
+            }
+
+            IsRunning = true;
+            IsEnabled = false;
+
+            var url = App.Current.Resources["UrlAPI"].ToString();
+            Response response;
+
+            if (Product.Id != 0)
+            {
+                response = await _apiService.PutAsync(
+                    url,
+                    "/api",
+                    "/Products",
+                    Product.Id,
+                    Product,
+                    "bearer",
+                    ProductsViewModel.GetInstance().TokenResponse.Token);
+            }
+            else
+            {
+                response = await _apiService.PostAsync(
+                    url,
+                    "/api",
+                    "/Products",
+                    Product,
+                    "bearer",
+                    ProductsViewModel.GetInstance().TokenResponse.Token);
+            }
+
+            IsRunning = false;
+            IsEnabled = true;
+
+            if (!response.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    response.Message,
+                    "Accept");
+                return;
+            }
+
+            await _navigationService.GoBackAsync();
         }
 
         private async void ChangeImage()
         {
-            throw new NotImplementedException();
         }
     }
 }

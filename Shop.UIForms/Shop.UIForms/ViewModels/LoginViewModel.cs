@@ -7,13 +7,12 @@
     using Shop.Common.Services;
     using Shop.UIForms.Helpers;
     using Shop.UIForms.Views;
-    using System;
     using System.Windows.Input;
     using Xamarin.Forms;
 
     public class LoginViewModel : BaseViewModel
     {
-        private ApiService apiService;
+        private readonly ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
 
