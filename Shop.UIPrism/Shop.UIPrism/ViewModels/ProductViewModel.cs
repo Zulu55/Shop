@@ -1,5 +1,8 @@
-﻿using Prism.Commands;
+﻿using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Prism.Commands;
 using Prism.Navigation;
+using Shop.Common.Helpers;
 using Shop.Common.Models;
 using Shop.Common.Services;
 using Xamarin.Forms;
@@ -15,6 +18,7 @@ namespace Shop.UIPrism.ViewModels
         private bool _isEnabled;
         private bool _isRunning;
         private ImageSource _imageSource;
+        private MediaFile _file;
         private DelegateCommand _saveCommand;
         private DelegateCommand _deleteCommand;
         private DelegateCommand _changeImageCommand;
@@ -147,6 +151,11 @@ namespace Shop.UIPrism.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
+            if (_file != null)
+            {
+                Product.ImageArray = FilesHelper.ReadFully(_file.GetStream());
+            }
+
             var url = App.Current.Resources["UrlAPI"].ToString();
             Response response;
 
@@ -189,6 +198,45 @@ namespace Shop.UIPrism.ViewModels
 
         private async void ChangeImage()
         {
+            await CrossMedia.Current.Initialize();
+
+            var source = await Application.Current.MainPage.DisplayActionSheet(
+                "Where do you take the picture?",
+                "Cancel",
+                null,
+                "From Gallery",
+                "From Camera");
+
+            if (source == "Cancel")
+            {
+                _file = null;
+                return;
+            }
+
+            if (source == "From Camera")
+            {
+                _file = await CrossMedia.Current.TakePhotoAsync(
+                    new StoreCameraMediaOptions
+                    {
+                        Directory = "Sample",
+                        Name = "test.jpg",
+                        PhotoSize = PhotoSize.Small,
+                    }
+                );
+            }
+            else
+            {
+                _file = await CrossMedia.Current.PickPhotoAsync();
+            }
+
+            if (_file != null)
+            {
+                ImageSource = ImageSource.FromStream(() =>
+                {
+                    var stream = _file.GetStream();
+                    return stream;
+                });
+            }
         }
     }
 }
