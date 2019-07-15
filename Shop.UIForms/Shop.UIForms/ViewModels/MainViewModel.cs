@@ -56,35 +56,35 @@ namespace Shop.UIForms.ViewModels
         private void LoadMenus()
         {
             var menus = new List<Menu>
-        {
-            new Menu
             {
-                Icon = "ic_info",
-                PageName = "AboutPage",
-                Title = "About"
-            },
+                new Menu
+                {
+                    Icon = "ic_info",
+                    PageName = "AboutPage",
+                    Title = "About"
+                },
 
-            new Menu
-            {
-                Icon = "ic_person",
-                PageName = "ProfilePage",
-                Title = "Modify User"
-            },
+                new Menu
+                {
+                    Icon = "ic_person",
+                    PageName = "ProfilePage",
+                    Title = "Modify User"
+                },
 
-            new Menu
-            {
-                Icon = "ic_phonelink_setup",
-                PageName = "SetupPage",
-                Title = "Setup"
-            },
+                new Menu
+                {
+                    Icon = "ic_phonelink_setup",
+                    PageName = "SetupPage",
+                    Title = "Setup"
+                },
 
-            new Menu
-            {
-                Icon = "ic_exit_to_app",
-                PageName = "LoginPage",
-                Title = "Close session"
-            }
-        };
+                new Menu
+                {
+                    Icon = "ic_exit_to_app",
+                    PageName = "LoginPage",
+                    Title = "Close session"
+                }
+            };
 
             this.Menus = new ObservableCollection<MenuItemViewModel>(
                 menus.Select(m => new MenuItemViewModel

@@ -24,14 +24,15 @@ namespace Shop.UIPrism
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/Login");
+            //await NavigationService.NavigateAsync("NavigationPage/Login");
+            await NavigationService.NavigateAsync("/NavigationPage/Login");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
-            containerRegistry.Register<IApiService, ApiService>();
             containerRegistry.RegisterForNavigation<Products, ProductsViewModel>();
             containerRegistry.RegisterForNavigation<Product, ProductViewModel>();
         }
