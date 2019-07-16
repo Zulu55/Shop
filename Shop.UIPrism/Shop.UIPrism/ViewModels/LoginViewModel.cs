@@ -1,5 +1,7 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
+using Shop.Common.Helpers;
 using Shop.Common.Models;
 using Shop.Common.Services;
 
@@ -94,16 +96,13 @@ namespace Shop.UIPrism.ViewModels
 
             var user = (User)response2.Result;
 
-            var parameters = new NavigationParameters
-            {
-                { "token", token },
-                { "user", user }
-            };
+            Settings.Token = JsonConvert.SerializeObject(token);
+            Settings.User = JsonConvert.SerializeObject(user);
 
             IsEnabled = true;
             IsRunning = false;
 
-            await _navigationService.NavigateAsync("Products", parameters);
+            await _navigationService.NavigateAsync("/MyMasterDetail/NavigationPage/Products");
         }
     }
 }

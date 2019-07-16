@@ -24,7 +24,6 @@ namespace Shop.UIPrism
         {
             InitializeComponent();
 
-            //await NavigationService.NavigateAsync("NavigationPage/Login");
             await NavigationService.NavigateAsync("/NavigationPage/Login");
         }
 
@@ -35,6 +34,10 @@ namespace Shop.UIPrism
             containerRegistry.RegisterForNavigation<Login, LoginViewModel>();
             containerRegistry.RegisterForNavigation<Products, ProductsViewModel>();
             containerRegistry.RegisterForNavigation<Product, ProductViewModel>();
+            containerRegistry.RegisterForNavigation<MyMasterDetail, MyMasterDetailViewModel>();
+            containerRegistry.RegisterForNavigation<About, AboutViewModel>();
+            containerRegistry.RegisterForNavigation<ModifyUser, ModifyUserViewModel>();
+            containerRegistry.RegisterForNavigation<Setup, SetupViewModel>();
         }
     }
 }

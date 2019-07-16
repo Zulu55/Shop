@@ -7,6 +7,10 @@
              Title="{Binding Title}">
 
     <StackLayout Padding="10">
+        <Image
+            HeightRequest="150"
+            Source="shop">
+        </Image>
         <Label 
             Text="Email"/>
         <Entry 
@@ -20,11 +24,16 @@
             Text="{Binding Password}" 
             Placeholder="Enter your password..."/>
         <ActivityIndicator
-            IsRunning="{Binding IsRunning}"/>
+            IsRunning="{Binding IsRunning}"
+            VerticalOptions="CenterAndExpand"/>
         <Button
+            BackgroundColor="Navy"
+            BorderRadius="23"
             Command="{Binding LoginCommand}"
+            HeightRequest="46"
             HorizontalOptions="FillAndExpand"
             IsEnabled="{Binding IsEnabled}"
-            Text="login"/>
+            Text="login"
+            TextColor="White"/>
     </StackLayout>
 </ContentPage>

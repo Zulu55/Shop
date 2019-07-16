@@ -1,5 +1,7 @@
-﻿using Prism.Commands;
+﻿using Newtonsoft.Json;
+using Prism.Commands;
 using Prism.Navigation;
+using Shop.Common.Helpers;
 using Shop.Common.Models;
 using Shop.Common.Services;
 using System;
@@ -13,26 +15,19 @@ namespace Shop.UIPrism.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
-        private TokenResponse _tokenResponse;
-        private User _user;
         private bool _isRefreshing;
         private ObservableCollection<ProductItemViewModel> _products;
         private DelegateCommand _addProductCommand;
-        private static ProductsViewModel _instance;
 
         public ProductsViewModel(INavigationService navigationService, IApiService apiService) : base(navigationService)
         {
             _navigationService = navigationService;
             _apiService = apiService;
-            _instance = this;
             Title = "Products";
+            LoadProductsAsycn();
         }
 
         public DelegateCommand AddProductCommand => _addProductCommand ?? (_addProductCommand = new DelegateCommand(AddProduct));
-
-        public TokenResponse TokenResponse => _tokenResponse;
-
-        public User User => _user;
 
         public bool IsRefreshing
         {
@@ -46,39 +41,18 @@ namespace Shop.UIPrism.ViewModels
             set => SetProperty(ref _products, value);
         }
 
-        public static ProductsViewModel GetInstance()
-        {
-            return _instance;
-        }
-
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            base.OnNavigatedTo(parameters);
-
-            if (parameters.ContainsKey("token"))
-            {
-                _tokenResponse = parameters.GetValue<TokenResponse>("token");
-            }
-
-            if (parameters.ContainsKey("user"))
-            {
-                _user = parameters.GetValue<User>("user");
-            }
-
-            LoadProductsAsycn();
-        }
-
         private async void LoadProductsAsycn()
         {
             IsRefreshing = true;
 
+            var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var url = App.Current.Resources["UrlAPI"].ToString();
             var response = await _apiService.GetListAsync<Product>(
                 url,
                 "/api",
                 "/Products",
                 "bearer",
-                _tokenResponse.Token);
+                token.Token);
 
             IsRefreshing = false;
 

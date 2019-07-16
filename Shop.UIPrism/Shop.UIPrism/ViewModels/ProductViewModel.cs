@@ -1,4 +1,5 @@
-﻿using Plugin.Media;
+﻿using Newtonsoft.Json;
+using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
@@ -78,9 +79,10 @@ namespace Shop.UIPrism.ViewModels
             }
             else
             {
+                var user = JsonConvert.DeserializeObject<User>(Settings.User);
                 Product = new Product
                 {
-                    User = ProductsViewModel.GetInstance().User
+                    User = user
                 };
 
                 Title = "New Product";
@@ -105,13 +107,14 @@ namespace Shop.UIPrism.ViewModels
             IsEnabled = false;
 
             var url = App.Current.Resources["UrlAPI"].ToString();
+            var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             var response = await _apiService.DeleteAsync(
                 url,
                 "/api",
                 "/Products",
                 this.Product.Id,
                 "bearer",
-                ProductsViewModel.GetInstance().TokenResponse.Token);
+                token.Token);
 
             IsRunning = false;
             IsEnabled = true;
@@ -157,6 +160,7 @@ namespace Shop.UIPrism.ViewModels
             }
 
             var url = App.Current.Resources["UrlAPI"].ToString();
+            var token = JsonConvert.DeserializeObject<TokenResponse>(Settings.Token);
             Response response;
 
             if (Product.Id != 0)
@@ -168,7 +172,7 @@ namespace Shop.UIPrism.ViewModels
                     Product.Id,
                     Product,
                     "bearer",
-                    ProductsViewModel.GetInstance().TokenResponse.Token);
+                    token.Token);
             }
             else
             {
@@ -178,7 +182,7 @@ namespace Shop.UIPrism.ViewModels
                     "/Products",
                     Product,
                     "bearer",
-                    ProductsViewModel.GetInstance().TokenResponse.Token);
+                    token.Token);
             }
 
             IsRunning = false;

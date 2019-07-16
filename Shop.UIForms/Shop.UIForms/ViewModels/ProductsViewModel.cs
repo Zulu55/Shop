@@ -12,7 +12,7 @@
         private readonly ApiService apiService;
         private List<Product> myProducts;
         private ObservableCollection<ProductItemViewModel> products;
-        private bool isRefreshing;
+        private bool isRefreshing;  
 
         public ObservableCollection<ProductItemViewModel> Products
         {
