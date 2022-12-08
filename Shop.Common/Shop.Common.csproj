@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.2.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
   </ItemGroup>
 
